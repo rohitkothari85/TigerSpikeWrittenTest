@@ -68,19 +68,15 @@ public class HomePage {
 
 	public void addFirstSearchResultToCart(String item) throws Exception {
 		String mainWindow = getWindowHandle(driver);
-		System.out.println("mw " + " " + item + " " + mainWindow);
 		firstSearchResult.click();
 
 		Set<String> allWindowHandles = driver.getWindowHandles();
 
 		if (allWindowHandles.size() == 1) {
-			System.out.println("if (mainWindow.equalsIgnoreCase(newWindow)) {");
 			itemDetailPage = new ItemDetailPage(driver);
 			addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
 
 		} else {
-			System.out.println("else flow >> " + allWindowHandles.size());
-			// Set<String> allWindowHandles = driver.getWindowHandles();
 			Iterator<String> i1 = allWindowHandles.iterator();
 
 			while (i1.hasNext()) {
@@ -88,8 +84,6 @@ public class HomePage {
 				String childWindow = i1.next();
 
 				if (!mainWindow.equalsIgnoreCase(childWindow)) {
-					System.out.println("cw " + " " + item + " " + childWindow);
-					// Switching to Child window
 					driver.switchTo().window(childWindow);
 					itemDetailPage = new ItemDetailPage(driver);
 					addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
