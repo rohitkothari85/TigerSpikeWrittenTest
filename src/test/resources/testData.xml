@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<amazon>
+	<order id="1">
+		<item>OnePlus 6 </item>
+		<quantity>1</quantity>
+	</order>
+	<order id="2">
+		<item>Pendrive</item>
+		<quantity>1</quantity>
+	</order>
+	<order id="3">
+		<item>Mobile</item>
+		<quantity>1</quantity>
+	</order>
+	<order id="4">
+		<item>head and shoulders shampoos</item>
+		<quantity>1</quantity>
+	</order>
+	<order id="5">
+		<item>mobile stand</item>
+		<quantity>1</quantity>
+	</order>
+</amazon>
