@@ -13,13 +13,10 @@ import org.w3c.dom.NodeList;
 public class XMLUtils {
 
 	public static Object[][] getDataArray(String filePath) throws Exception
-	// public static void main(String[] args)
 	{
-
 		String[][] dataArray = null;
 		try {
-
-			File fXmlFile = new File(filePath);// "src/test/resources/testData.xml");
+			File fXmlFile = new File(filePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
