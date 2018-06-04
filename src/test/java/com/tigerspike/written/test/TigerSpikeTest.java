@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.tigerspike.written.test.screens.AddToCartConfirmationPage;
 import com.tigerspike.written.test.screens.ConfirmDeliveryAddressPage;
 import com.tigerspike.written.test.screens.HomePage;
 import com.tigerspike.written.test.screens.ItemDetailPage;
@@ -56,7 +57,7 @@ public class TigerSpikeTest {
 		homeScreen.clearSearchTextBox();
 		homeScreen.search(item);
 		homeScreen.addFirstSearchResultToCart(item);
-		assertEquals("", "");
+		assertEquals((new AddToCartConfirmationPage(driver)).getAddToCartLabel(), "Added to Cart");
 	}
 
 	@Test

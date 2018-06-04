@@ -21,4 +21,11 @@ public class AddToCartConfirmationPage {
 	@FindBy(className = "a-button-inner")
 	WebElement proceedToCheckOutButton;
 
+	@FindBy(xpath = "//*[@id='huc-v2-order-row-confirm-text']/h1")
+	WebElement addToCartLabel;
+
+	public String getAddToCartLabel(){
+		return addToCartLabel.getText();
+	}
+	
 }
