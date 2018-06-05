@@ -20,9 +20,9 @@ public class HomePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 
-		if (!searchTextBox.isDisplayed()) {
-			throw new Exception("Home poge not found");
-		}
+//		if (!searchTextBox.isDisplayed()) {
+//			throw new Exception("Home poge not found");
+//		}
 	}
 
 	@FindBy(className = "nav-action-button")
@@ -37,7 +37,7 @@ public class HomePage {
 	@FindBy(id = "nav-link-yourAccount")
 	WebElement yourOrdersLabel;
 
-	@FindBy(xpath = "//*[@id='result_0']//img")
+	@FindBy(xpath = "//*[@id='result_0']//h2")
 	WebElement firstSearchResult;
 
 	@FindBy(className = "nav-cart-icon")
@@ -57,43 +57,48 @@ public class HomePage {
 	}
 
 	public void search(String searchItem) throws InterruptedException {
+		searchTextBox.clear();
 		searchTextBox.sendKeys(searchItem);
 		firstAutoSuggest.click();
-		searchButton.click();
+		// searchButton.click();
 	}
 
-	public void clearSearchTextBox() {
-		searchTextBox.clear();
-	}
+	public void addFirstSearchResultToCart(String item) {
+		try {
+			System.out.println("<<<< Inside addFirstSearchResultToCart >>>>>");
+			String mainWindow = getWindowHandle(driver);
+			firstSearchResult.click();
 
-	public void addFirstSearchResultToCart(String item) throws Exception {
-		String mainWindow = getWindowHandle(driver);
-		firstSearchResult.click();
+			Set<String> allWindowHandles = driver.getWindowHandles();
 
-		Set<String> allWindowHandles = driver.getWindowHandles();
+			if (allWindowHandles.size() == 1) {
 
-		if (allWindowHandles.size() == 1) {
-			itemDetailPage = new ItemDetailPage(driver);
-			addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
+				itemDetailPage = new ItemDetailPage(driver);
+				addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
 
-		} else {
-			Iterator<String> i1 = allWindowHandles.iterator();
+			} else {
+				Iterator<String> i1 = allWindowHandles.iterator();
 
-			while (i1.hasNext()) {
+				while (i1.hasNext()) {
 
-				String childWindow = i1.next();
+					String childWindow = i1.next();
 
-				if (!mainWindow.equalsIgnoreCase(childWindow)) {
-					driver.switchTo().window(childWindow);
-					itemDetailPage = new ItemDetailPage(driver);
-					addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
-					driver.close();
+					if (!mainWindow.equalsIgnoreCase(childWindow)) {
+						driver.switchTo().window(childWindow);
+						itemDetailPage = new ItemDetailPage(driver);
+						addToCartConfirmationPage = itemDetailPage.clickAddToCartButton();
+						driver.close();
+					}
 				}
 			}
+
+			driver.switchTo().window(mainWindow);
+			searchTextBox.clear();
+			System.out.println("<<<< Existing addFirstSearchResultToCart >>>>>");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		driver.switchTo().window(mainWindow);
-
 	}
 
 	public String getWindowHandle(WebDriver driver) {

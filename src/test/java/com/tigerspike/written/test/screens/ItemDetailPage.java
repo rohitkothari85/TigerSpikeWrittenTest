@@ -13,9 +13,9 @@ public class ItemDetailPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 
-		if (!addToCartButton.isDisplayed()) {
-			throw new Exception("Item detail poge not found");
-		}
+//		if (!addToCartButton.isDisplayed()) {
+//			throw new Exception("Item detail poge not found");
+//		}
 	}
 
 	@FindBy(id = "add-to-cart-button")

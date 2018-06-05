@@ -13,9 +13,9 @@ public class ShoppingCartPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 
-		if (!proceedToCheckOutButton.isDisplayed()) {
-			throw new Exception("Shopping cart poge not found");
-		}
+//		if (!proceedToCheckOutButton.isDisplayed()) {
+//			throw new Exception("Shopping cart poge not found");
+//		}
 	}
 
 	@FindBy(name = "proceedToCheckout")

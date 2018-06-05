@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <amazon>
 	<order id="1">
-		<item>OnePlus 6 </item>
+		<item>pet foods for dogs</item>
 		<quantity>1</quantity>
 	</order>
 	<order id="2">
-		<item>Pendrive</item>
+		<item>otg</item>
 		<quantity>1</quantity>
 	</order>
 	<order id="3">
-		<item>Mobile</item>
+		<item>car charger for </item>
 		<quantity>1</quantity>
 	</order>
 	<order id="4">
-		<item>head and shoulders shampoos</item>
+		<item>usb ctype adapter</item>
 		<quantity>1</quantity>
 	</order>
 	<order id="5">
-		<item>mobile stand</item>
+		<item>boards</item>
 		<quantity>1</quantity>
 	</order>
 </amazon>
